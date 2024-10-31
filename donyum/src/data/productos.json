@@ -1,0 +1,147 @@
+[
+    {
+      "id": 1,
+      "nombre": "Ensalada alemana",
+      "descripcion": "Ensalada de papa, cebolla y mayonesa, estilo alemán.",
+      "precio": 50000,
+      "categoria": "Ensaladas y Vinagretas",
+      "imagen": "ruta/a/imagen-ensalada-alemana.jpg"
+    },
+    {
+      "id": 2,
+      "nombre": "Ensalada de arroz",
+      "descripcion": "Ensalada fresca de arroz, ideal como acompañamiento.",
+      "precio": 50000,
+      "categoria": "Ensaladas y Vinagretas",
+      "imagen": "ruta/a/imagen-ensalada-arroz.jpg"
+    },
+    {
+      "id": 3,
+      "nombre": "Ensalada de poroto",
+      "descripcion": "Mezcla de porotos con aderezos frescos.",
+      "precio": 50000,
+      "categoria": "Ensaladas y Vinagretas",
+      "imagen": "ruta/a/imagen-ensalada-poroto.jpg"
+    },
+    {
+      "id": 4,
+      "nombre": "Vinagreta de vegetales",
+      "descripcion": "Variedad de vegetales en vinagreta, perfecto como guarnición.",
+      "precio": 30000,
+      "categoria": "Ensaladas y Vinagretas",
+      "imagen": "ruta/a/imagen-vinagreta-vegetales.jpg"
+    },
+    {
+      "id": 5,
+      "nombre": "Lengua a la vinagreta",
+      "descripcion": "Lengua de res en una suave vinagreta, lista para servir.",
+      "precio": 100000,
+      "categoria": "Ensaladas y Vinagretas",
+      "imagen": "ruta/a/imagen-lengua-vinagreta.jpg"
+    },
+    {
+      "id": 6,
+      "nombre": "Matambre relleno",
+      "descripcion": "Matambre relleno, acompañado con salsa escabeche.",
+      "precio": 120000,
+      "categoria": "Carnes y Acompañamientos",
+      "imagen": "ruta/a/imagen-matambre-relleno.jpg"
+    },
+    {
+      "id": 7,
+      "nombre": "Peseto a la vitel tone",
+      "descripcion": "Peseto con salsa vitel tone, decorado con remolacha.",
+      "precio": 120000,
+      "categoria": "Carnes y Acompañamientos",
+      "imagen": "ruta/a/imagen-peseto-vitel-tone.jpg"
+    },
+    {
+      "id": 8,
+      "nombre": "Sandwich de peseto con lechuga y tomate",
+      "descripcion": "Sándwich fresco de peseto con lechuga y tomate, ideal para eventos.",
+      "precio": 180000,
+      "categoria": "Carnes y Acompañamientos",
+      "imagen": "ruta/a/imagen-sandwich-peseto.jpg"
+    },
+    {
+      "id": 9,
+      "nombre": "Arrollado de pollo",
+      "descripcion": "Arrollado de pollo relleno de jamón, queso, aceitunas y uvas pasas.",
+      "precio": 100000,
+      "categoria": "Carnes y Acompañamientos",
+      "imagen": "ruta/a/imagen-arrollado-pollo.jpg"
+    },
+    {
+      "id": 10,
+      "nombre": "Bocaditos surtidos",
+      "descripcion": "Variedad de bocaditos como sopa paraguaya, pizza, empanada de carne, y milanesitas de carne.",
+      "precio": 150000,
+      "categoria": "Bocaditos y Aperitivos",
+      "imagen": "ruta/a/imagen-bocaditos-surtidos.jpg"
+    },
+    {
+      "id": 11,
+      "nombre": "Croquetas de carne",
+      "descripcion": "Deliciosas croquetas de carne, crujientes y llenas de sabor.",
+      "precio": 150000,
+      "categoria": "Bocaditos y Aperitivos",
+      "imagen": "ruta/a/imagen-croquetas-carne.jpg"
+    },
+    {
+      "id": 12,
+      "nombre": "Empanadas de carne y pollo",
+      "descripcion": "Empanadas rellenas de carne o pollo, perfectas para picar.",
+      "precio": 150000,
+      "categoria": "Bocaditos y Aperitivos",
+      "imagen": "ruta/a/imagen-empanadas-carne-pollo.jpg"
+    },
+    {
+      "id": 13,
+      "nombre": "Sandwich de verduras",
+      "descripcion": "Sándwiches ligeros de verduras, ideales como opción saludable.",
+      "precio": 180000,
+      "categoria": "Bocaditos y Aperitivos",
+      "imagen": "ruta/a/imagen-sandwich-verduras.jpg"
+    },
+    {
+      "id": 14,
+      "nombre": "Sandwich de jamón y queso",
+      "descripcion": "Sándwich clásico de jamón y queso, un favorito en cualquier ocasión.",
+      "precio": 180000,
+      "categoria": "Bocaditos y Aperitivos",
+      "imagen": "ruta/a/imagen-sandwich-jamon-queso.jpg"
+    },
+    {
+      "id": 15,
+      "nombre": "Tarta de verduras (huevos y aceitunas)",
+      "descripcion": "Tarta salada de verduras con huevos y aceitunas, ideal para compartir.",
+      "precio": 50000,
+      "categoria": "Tradicionales y Dulces",
+      "imagen": "ruta/a/imagen-tarta-verduras.jpg"
+    },
+    {
+      "id": 16,
+      "nombre": "Sopa paraguaya",
+      "descripcion": "Tradicional sopa paraguaya, ideal para acompañar tus comidas.",
+      "precio": 50000,
+      "categoria": "Tradicionales y Dulces",
+      "imagen": "ruta/a/imagen-sopa-paraguaya.jpg"
+    },
+    {
+      "id": 17,
+      "nombre": "Budín de pan con salsa de frutilla",
+      "descripcion": "Budín suave de pan acompañado de una deliciosa salsa de frutilla.",
+      "precio": 40000,
+      "categoria": "Tradicionales y Dulces",
+      "imagen": "ruta/a/imagen-budin-pan.jpg"
+    },
+    {
+      "id": 18,
+      "nombre": "Mousse de mburucuyá",
+      "descripcion": "Mousse refrescante de mburucuyá, perfecto como postre ligero.",
+      "precio": 40000,
+      "categoria": "Tradicionales y Dulces",
+      "imagen": "ruta/a/imagen-mousse-mburucuya.jpg"
+    }
+  ]
+  
