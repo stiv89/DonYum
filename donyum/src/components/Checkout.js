@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
+import emailjs from 'emailjs-com'; // Importar EmailJS
 
-Modal.setAppElement('#root'); // Necesario para accesibilidad del modal
+Modal.setAppElement('#root');
 
 const Checkout = ({ carrito, productos, limpiarCarrito }) => {
   const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
+  const [correo, setCorreo] = useState(''); // Nuevo estado para el correo
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -16,8 +18,25 @@ const Checkout = ({ carrito, productos, limpiarCarrito }) => {
       return `${producto.nombre} x ${carrito[id]}`;
     }).join(', ');
 
-    const mensaje = `https://wa.me/tu-numero?text=Hola,%20mi%20pedido%20es:%20${resumen}%20y%20mi%20nombre%20es:%20${nombre}%20${apellido}`;
-    
+    // Mensaje personalizado para WhatsApp
+    const mensaje = `https://wa.me/tu-numero?text=Hola,%20soy%20${nombre}%20${apellido}.%20Me%20gustaría%20agendar%20estos%20pedidos:%20${resumen}`;
+
+    // Enviar el correo utilizando EmailJS
+    const templateParams = {
+      from_name: nombre,
+      apellido: apellido,
+      from_email: correo, // Enviar el correo ingresado por el usuario
+      message: `Hola,%20soy%20${nombre}%20${apellido}.%20Me%20gustaría%20agendar%20estos%20pedidos:%20${resumen}`,
+    };
+
+    emailjs.send('service_ksw8nnx', 'template_w7ne66c', templateParams, '-dCH8DlVkeJXQCQNh') // Asegúrate de tener el ID correcto
+      .then((response) => {
+        console.log('Correo enviado con éxito:', response.status, response.text);
+      })
+      .catch((error) => {
+        console.error('Error al enviar el correo:', error);
+      });
+
     // Abrir el enlace de WhatsApp en una nueva pestaña
     window.open(mensaje, '_blank');
 
@@ -31,12 +50,12 @@ const Checkout = ({ carrito, productos, limpiarCarrito }) => {
     setTimeout(() => {
       setModalIsOpen(false);
       navigate('/');
-    }, 3000); // Cambia el tiempo de espera si deseas más o menos tiempo
+    }, 3000);
   };
 
   return (
     <div style={styles.container}>
-      <h2>Detalles del Pedido</h2>
+      <h2 style={styles.heading}>Detalles del Pedido</h2>
       <ul style={styles.list}>
         {Object.keys(carrito).map((id) => {
           const producto = productos.find((p) => p.id === parseInt(id));
@@ -67,6 +86,13 @@ const Checkout = ({ carrito, productos, limpiarCarrito }) => {
         onChange={(e) => setApellido(e.target.value)}
         style={styles.input}
       />
+      <input
+        type="email" // Campo de correo electrónico
+        placeholder="Correo Electrónico"
+        value={correo}
+        onChange={(e) => setCorreo(e.target.value)}
+        style={styles.input}
+      />
       <button onClick={handleConfirmar} style={styles.confirmButton}>Confirmar</button>
 
       {/* Modal de éxito */}
@@ -76,20 +102,82 @@ const Checkout = ({ carrito, productos, limpiarCarrito }) => {
         style={modalStyles}
         contentLabel="Pedido Exitoso"
       >
-        <h2>¡Pedido Exitoso!</h2>
-        <p>Tu pedido ha sido enviado con éxito. Serás redirigido a la página de inicio.</p>
+        <h2 style={styles.modalHeading}>¡Pedido Exitoso!</h2>
+        <p style={styles.modalText}>Tu pedido ha sido enviado con éxito. Serás redirigido a la página de inicio.</p>
       </Modal>
     </div>
   );
 };
 
 const styles = {
-  container: { padding: '20px' },
-  list: { listStyleType: 'none', padding: 0 },
-  item: { padding: '10px 0' },
-  total: { marginTop: '20px', fontWeight: 'bold' },
-  input: { display: 'block', margin: '10px 0', padding: '8px', width: '100%' },
-  confirmButton: { padding: '10px', backgroundColor: '#333', color: '#fff', border: 'none', cursor: 'pointer', width: '100%' },
+  container: {
+    padding: '40px',
+    maxWidth: '600px',
+    margin: '40px auto',
+    background: 'rgba(255, 255, 255, 0.1)',
+    backdropFilter: 'blur(10px)',
+    borderRadius: '15px',
+    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
+    color: '#fff',
+    textAlign: 'left',
+  },
+  heading: {
+    fontSize: '2.5rem',
+    color: '#fff',
+    textAlign: 'center',
+    marginBottom: '20px',
+  },
+  list: {
+    listStyleType: 'none',
+    padding: 0,
+    marginBottom: '20px',
+  },
+  item: {
+    padding: '10px 0',
+    borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
+    color: '#ccc',
+  },
+  total: {
+    marginTop: '20px',
+    fontWeight: 'bold',
+    fontSize: '1.2rem',
+    color: '#fff',
+    textAlign: 'center',
+  },
+  input: {
+    display: 'block',
+    margin: '10px 0',
+    padding: '15px',
+    width: '100%',
+    borderRadius: '10px',
+    border: '1px solid rgba(255, 255, 255, 0.3)',
+    background: 'rgba(255, 255, 255, 0.2)',
+    color: '#fff',
+    fontSize: '1rem',
+    backdropFilter: 'blur(5px)',
+  },
+  confirmButton: {
+    padding: '15px',
+    backgroundColor: 'rgba(51, 51, 51, 0.8)',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '10px',
+    cursor: 'pointer',
+    fontSize: '1rem',
+    fontWeight: 'bold',
+    display: 'block',
+    width: '100%',
+    marginTop: '20px',
+    transition: 'background-color 0.3s',
+  },
+  modalHeading: {
+    color: '#4CAF50',
+    fontSize: '1.5rem',
+    marginBottom: '10px',
+  },
+  modalText: {
+    color: '#fff',
+  },
 };
 
 const modalStyles = {
@@ -101,7 +189,12 @@ const modalStyles = {
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
     padding: '20px',
-    textAlign: 'center'
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    borderRadius: '15px',
+    backdropFilter: 'blur(10px)',
+    color: '#fff',
+    textAlign: 'center',
+    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
   },
 };
 

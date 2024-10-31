@@ -10,18 +10,16 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Parámetros que se envían a la plantilla de EmailJS
     const templateParams = {
       from_name: nombre,
       from_email: email,
       message: mensaje,
     };
 
-    // Reemplaza 'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', y 'YOUR_USER_ID' con los valores de tu cuenta de EmailJS
     emailjs.send('service_ksw8nnx', 'template_kv4kjye', templateParams, '-dCH8DlVkeJXQCQNh')
       .then((response) => {
         console.log('Correo enviado con éxito:', response.status, response.text);
-        setEnviado(true); // Mostrar mensaje de éxito
+        setEnviado(true);
         setNombre('');
         setEmail('');
         setMensaje('');
@@ -33,7 +31,7 @@ const Contact = () => {
 
   return (
     <div style={styles.container}>
-      <h2>Contacto</h2>
+      <h2 style={styles.heading}>Contacto</h2>
       <p>Si tienes alguna consulta o deseas más información, contáctanos mediante el siguiente formulario:</p>
       
       {enviado && <p style={styles.successMessage}>¡Gracias! Tu mensaje ha sido enviado.</p>}
@@ -70,38 +68,71 @@ const Contact = () => {
 
 const styles = {
   container: {
-    padding: '20px',
+    padding: '40px',
     maxWidth: '600px',
-    margin: '0 auto',
+    margin: '40px auto',
+    background: 'rgba(255, 255, 255, 0.1)',
+    backdropFilter: 'blur(10px)',
+    borderRadius: '15px',
+    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
+    color: '#fff',
+    textAlign: 'left',
+  },
+  heading: {
+    fontSize: '2.5rem',
+    color: '#fff',
+    textAlign: 'center',
+    marginBottom: '20px',
   },
   form: {
     display: 'flex',
     flexDirection: 'column',
   },
   input: {
-    padding: '10px',
-    marginBottom: '10px',
-    borderRadius: '5px',
-    border: '1px solid #ddd',
+    padding: '15px',
+    marginBottom: '15px',
+    borderRadius: '10px',
+    border: '1px solid rgba(255, 255, 255, 0.3)',
+    background: 'rgba(255, 255, 255, 0.2)',
+    color: '#fff',
+    fontSize: '1rem',
+    backdropFilter: 'blur(5px)',
+    '::placeholder': {
+      color: '#ffffff',
+      opacity: 0.8,
+    },
   },
   textarea: {
-    padding: '10px',
-    marginBottom: '10px',
-    borderRadius: '5px',
-    border: '1px solid #ddd',
-    minHeight: '100px',
+    padding: '15px',
+    marginBottom: '15px',
+    borderRadius: '10px',
+    border: '1px solid rgba(255, 255, 255, 0.3)',
+    background: 'rgba(255, 255, 255, 0.2)',
+    color: '#fff',
+    fontSize: '1rem',
+    backdropFilter: 'blur(5px)',
+    minHeight: '120px',
+    '::placeholder': {
+      color: '#ffffff',
+      opacity: 0.8,
+    },
   },
   button: {
-    padding: '10px',
-    backgroundColor: '#333',
+    padding: '15px',
+    backgroundColor: 'rgba(51, 51, 51, 0.8)',
     color: '#fff',
     border: 'none',
-    borderRadius: '5px',
+    borderRadius: '10px',
     cursor: 'pointer',
+    fontSize: '1rem',
+    fontWeight: 'bold',
+    transition: 'background-color 0.3s',
   },
   successMessage: {
-    color: 'green',
-    marginBottom: '10px',
+    color: '#4CAF50',
+    marginBottom: '20px',
+    textAlign: 'center',
+    fontSize: '1rem',
   },
 };
 
