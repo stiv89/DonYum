@@ -71,12 +71,12 @@ const styles = {
     padding: '40px',
     maxWidth: '600px',
     margin: '40px auto',
-    background: 'rgba(255, 255, 255, 0.1)',
-    backdropFilter: 'blur(10px)',
+    background: 'rgba(255, 255, 255, 0.1)', // Fondo translúcido
     borderRadius: '15px',
     boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
     color: '#fff',
     textAlign: 'left',
+    zIndex: 1, // Aseguramos que el contenedor esté detrás del menú desplegable
   },
   heading: {
     fontSize: '2.5rem',
@@ -96,7 +96,6 @@ const styles = {
     background: 'rgba(255, 255, 255, 0.2)',
     color: '#fff',
     fontSize: '1rem',
-    backdropFilter: 'blur(5px)',
     '::placeholder': {
       color: '#ffffff',
       opacity: 0.8,
@@ -110,7 +109,6 @@ const styles = {
     background: 'rgba(255, 255, 255, 0.2)',
     color: '#fff',
     fontSize: '1rem',
-    backdropFilter: 'blur(5px)',
     minHeight: '120px',
     '::placeholder': {
       color: '#ffffff',

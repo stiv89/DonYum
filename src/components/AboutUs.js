@@ -38,10 +38,10 @@ const styles = {
     maxWidth: '800px',
     margin: '40px auto',
     background: 'rgba(255, 255, 255, 0.1)', // Fondo translúcido
-    backdropFilter: 'blur(10px)',
     borderRadius: '15px',
     boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
     textAlign: 'left',
+    zIndex: 1, // Asegura que el contenedor esté detrás del menú desplegable
   },
   heading: {
     fontSize: '2.5rem',
@@ -56,7 +56,6 @@ const styles = {
     background: 'rgba(255, 255, 255, 0.15)', // Fondo translúcido para cada sección
     borderRadius: '10px',
     boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.1)',
-    backdropFilter: 'blur(10px)',
   },
   subheading: {
     fontSize: '1.8rem',

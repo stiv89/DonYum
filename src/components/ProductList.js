@@ -84,11 +84,11 @@ const ProductList = ({ carrito, setCarrito }) => {
 
 const styles = {
   container: {
-    padding: '40px',
+    padding: '20px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    background: 'linear-gradient(135deg, #333, #555)', // Fondo degradado gris oscuro
+    background: 'linear-gradient(135deg, #333, #555)',
     minHeight: '100vh',
   },
   heading: {
@@ -99,45 +99,45 @@ const styles = {
   },
   filtros: {
     display: 'flex',
+    flexWrap: 'wrap',
     gap: '10px',
+    justifyContent: 'center',
     marginBottom: '20px',
+    zIndex: 1, // Asegura que los filtros no sobrepasen el menú desplegable
   },
   filterButton: {
-    padding: '10px 15px',
+    padding: '8px 12px',
     borderRadius: '10px',
     border: 'none',
     background: 'rgba(255, 255, 255, 0.1)',
     color: '#fff',
     cursor: 'pointer',
-    backdropFilter: 'blur(10px)',
     transition: '0.3s',
     boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
   },
   activeFilterButton: {
-    padding: '10px 15px',
+    padding: '8px 12px',
     borderRadius: '10px',
     border: 'none',
-    background: 'rgba(255, 255, 255, 0.3)', // Color diferente para el botón activo
+    background: 'rgba(255, 255, 255, 0.3)',
     color: '#fff',
     cursor: 'pointer',
-    backdropFilter: 'blur(10px)',
     transition: '0.3s',
     boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.2)',
   },
   productList: {
-    display: 'flex',
-    flexWrap: 'wrap',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', // Ajuste adaptable
     gap: '20px',
-    justifyContent: 'center',
+    width: '100%',
+    maxWidth: '1200px',
   },
   producto: {
-    width: '220px',
-    padding: '20px',
+    padding: '15px',
     borderRadius: '15px',
     background: 'rgba(255, 255, 255, 0.2)',
     boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.1)',
     textAlign: 'center',
-    backdropFilter: 'blur(10px)',
     transition: 'transform 0.3s ease',
   },
   productName: {
@@ -193,3 +193,4 @@ const styles = {
 };
 
 export default ProductList;
+
