@@ -12,15 +12,27 @@ const Checkout = ({ carrito, productos, limpiarCarrito }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const navigate = useNavigate();
 
+  // Función para validar el correo electrónico
+  const isValidEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Expresión regular para validar correo
+    return re.test(String(email).toLowerCase());
+  };
+
   const handleConfirmar = () => {
+    // Validación del correo electrónico
+    if (!isValidEmail(correo)) {
+      alert("Por favor, ingresa un correo electrónico válido.");
+      return;
+    }
+  
     const resumen = Object.keys(carrito).map((id) => {
       const producto = productos.find((p) => p.id === parseInt(id));
       return `${producto.nombre} x ${carrito[id]}`;
     }).join(', ');
-
+  
     // Mensaje personalizado para WhatsApp
     const mensaje = `https://wa.me/tu-numero?text=Hola,%20soy%20${nombre}%20${apellido}.%20Me%20gustaría%20agendar%20estos%20pedidos:%20${resumen}`;
-
+  
     // Enviar el correo utilizando EmailJS
     const templateParams = {
       from_name: nombre,
@@ -28,31 +40,33 @@ const Checkout = ({ carrito, productos, limpiarCarrito }) => {
       from_email: correo, // Enviar el correo ingresado por el usuario
       message: `Hola,%20soy%20${nombre}%20${apellido}.%20Me%20gustaría%20agendar%20estos%20pedidos:%20${resumen}`,
     };
-
-    emailjs.send('service_ksw8nnx', 'template_w7ne66c', templateParams, '-dCH8DlVkeJXQCQNh') // Asegúrate de tener el ID correcto
+  
+    console.log(templateParams); // Verificar los valores que se envían
+  
+    emailjs.send('service_ksw8nnx', 'template_w7ne66c', templateParams, '-dCH8DlVkeJXQCQNh')
       .then((response) => {
         console.log('Correo enviado con éxito:', response.status, response.text);
+  
+        // Abrir el enlace de WhatsApp en una nueva pestaña
+        window.open(mensaje, '_blank');
+  
+        // Mostrar el modal de éxito
+        setModalIsOpen(true);
+  
+        // Limpiar el carrito después de confirmar el pedido
+        limpiarCarrito();
+  
+        // Redirigir al usuario a la página de inicio después de unos segundos
+        setTimeout(() => {
+          setModalIsOpen(false);
+          navigate('/');
+        }, 3000);
       })
       .catch((error) => {
         console.error('Error al enviar el correo:', error);
       });
-
-    // Abrir el enlace de WhatsApp en una nueva pestaña
-    window.open(mensaje, '_blank');
-
-    // Mostrar el modal de éxito
-    setModalIsOpen(true);
-
-    // Limpiar el carrito después de confirmar el pedido
-    limpiarCarrito();
-
-    // Redirigir al usuario a la página de inicio después de unos segundos
-    setTimeout(() => {
-      setModalIsOpen(false);
-      navigate('/');
-    }, 3000);
   };
-
+  
   return (
     <div style={styles.container}>
       <h2 style={styles.heading}>Detalles del Pedido</h2>
@@ -109,6 +123,7 @@ const Checkout = ({ carrito, productos, limpiarCarrito }) => {
   );
 };
 
+// Estilos
 const styles = {
   container: {
     padding: '40px',

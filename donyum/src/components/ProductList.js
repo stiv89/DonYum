@@ -27,11 +27,36 @@ const ProductList = ({ carrito, setCarrito }) => {
 
       {/* Filtros de categoría */}
       <div style={styles.filtros}>
-        <button style={styles.filterButton} onClick={() => setFiltro("Todos")}>Todos</button>
-        <button style={styles.filterButton} onClick={() => setFiltro("Ensaladas y Vinagretas")}>Ensaladas y Vinagretas</button>
-        <button style={styles.filterButton} onClick={() => setFiltro("Carnes y Acompañamientos")}>Carnes y Acompañamientos</button>
-        <button style={styles.filterButton} onClick={() => setFiltro("Bocaditos y Aperitivos")}>Bocaditos y Aperitivos</button>
-        <button style={styles.filterButton} onClick={() => setFiltro("Tradicionales y Dulces")}>Tradicionales y Dulces</button>
+        <button 
+          style={filtro === "Todos" ? styles.activeFilterButton : styles.filterButton} 
+          onClick={() => setFiltro("Todos")}
+        >
+          Todos
+        </button>
+        <button 
+          style={filtro === "Ensaladas y Vinagretas" ? styles.activeFilterButton : styles.filterButton} 
+          onClick={() => setFiltro("Ensaladas y Vinagretas")}
+        >
+          Ensaladas y Vinagretas
+        </button>
+        <button 
+          style={filtro === "Carnes y Acompañamientos" ? styles.activeFilterButton : styles.filterButton} 
+          onClick={() => setFiltro("Carnes y Acompañamientos")}
+        >
+          Carnes y Acompañamientos
+        </button>
+        <button 
+          style={filtro === "Bocaditos y Aperitivos" ? styles.activeFilterButton : styles.filterButton} 
+          onClick={() => setFiltro("Bocaditos y Aperitivos")}
+        >
+          Bocaditos y Aperitivos
+        </button>
+        <button 
+          style={filtro === "Tradicionales y Dulces" ? styles.activeFilterButton : styles.filterButton} 
+          onClick={() => setFiltro("Tradicionales y Dulces")}
+        >
+          Tradicionales y Dulces
+        </button>
       </div>
 
       {/* Lista de productos */}
@@ -87,6 +112,17 @@ const styles = {
     backdropFilter: 'blur(10px)',
     transition: '0.3s',
     boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+  },
+  activeFilterButton: {
+    padding: '10px 15px',
+    borderRadius: '10px',
+    border: 'none',
+    background: 'rgba(255, 255, 255, 0.3)', // Color diferente para el botón activo
+    color: '#fff',
+    cursor: 'pointer',
+    backdropFilter: 'blur(10px)',
+    transition: '0.3s',
+    boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.2)',
   },
   productList: {
     display: 'flex',
